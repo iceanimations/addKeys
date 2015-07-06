@@ -4,6 +4,7 @@ Created on Jul 6, 2015
 @author: qurban.ali
 '''
 import pymel.core as pc
+import appUsageApp
 
 def add():
     sel = pc.ls(sl=True)
@@ -21,4 +22,4 @@ def add():
         except Exception as ex:
             pc.warning(str(ex))
     
-    
+    appUsageApp.updateDatabase('addKeys')
