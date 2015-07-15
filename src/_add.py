@@ -6,13 +6,15 @@ Created on Jul 6, 2015
 import pymel.core as pc
 import appUsageApp
 
-def add():
-    sel = pc.ls(sl=True)
+def add(sel=None, minTime=None, maxTime=None):
     if not sel:
-        pc.warning('No selection found in the scene')
-        return
-    minTime = pc.playbackOptions(minTime=True, q=True)
-    maxTime = pc.playbackOptions(maxTime=True, q=True)
+        sel = pc.ls(sl=True)
+        if not sel:
+            pc.warning('No selection found in the scene')
+            return
+    if not minTime and not maxTime:
+        minTime = pc.playbackOptions(minTime=True, q=True)
+        maxTime = pc.playbackOptions(maxTime=True, q=True)
     
     for obj in sel:
         try:
